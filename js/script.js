@@ -9,6 +9,7 @@ const {createApp} = Vue;
 createApp ({
     data () {
         return {
+            hover: false,
             carousel: {
                 images: [
                     'img/01.jpg',
@@ -63,8 +64,12 @@ createApp ({
                 }
             },3000)
         },
+        // stop() {
+        //     clearInterval(intervallo);
+        // },
     },
     created () {
         this.intervalData();
+        // this.stop(hover);
     }
 }).mount("#app");
