@@ -9,6 +9,7 @@ const {createApp} = Vue;
 createApp ({
     data () {
         return {
+            currentSlide: 0,
             hover: false,
             carousel: {
                 images: [
@@ -34,18 +35,17 @@ createApp ({
                 ],
                 intervallo: null,
             },
-            currentSlide: 0
         };
     },
     methods:{
-        showNext:function() {
+        showNext() {
             if (this.currentSlide < this.carousel.images.length - 1) {
                 this.currentSlide++;
             } else {
                 this.currentSlide = 0;
             }
         },
-        showPrev: function() {
+        showPrev() {
             if ( this.currentSlide > 0) {
                 this.currentSlide--;
             } else {
@@ -64,9 +64,13 @@ createApp ({
                 }
             },3000)
         },
-        // stop() {
-        //     clearInterval(intervallo);
-        // },
+        stop() {
+            clearInterval(this.intervallo);
+            this.intervallo = null;
+        },
+        start() {
+            this.intervalData(); 
+        },
     },
     created () {
         this.intervalData();

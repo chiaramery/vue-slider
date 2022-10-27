@@ -13,10 +13,10 @@
     <div id="app">
 
         <div class="container" >
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0" @mouseover="stop" @mouseleave="start" @focus="stop" @blur="start" @keyup.up="showPrev" @keyup.down="showNext">
 
                 <div class="item">
-                    <img :src="carousel.images[currentSlide]" alt="" @mouseover="hover = true" @mouseleave="hover = false" :class="{ active: hover }">
+                    <img :src="carousel.images[currentSlide]" alt="">
                     <div class="text">
                         <h3>{{carousel.title[currentSlide]}}</h3>
                         <p>{{carousel.text[currentSlide]}}</p>
